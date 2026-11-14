@@ -6,10 +6,25 @@ namespace POO
     {
         public static void Main(string[] args)
         {
-            var Perro = new Animal("Perro",12.5m);
-            var massage = Perro.getInfo();
+            var Pepe = new Perro("Perro",12.5m, "Rojo");
+            var massage = Pepe.getInfo();
 
             Console.WriteLine(massage);
+        }
+    }
+
+    class Perro : Animal
+    {
+        public string ColorPelo {get;set;}
+
+        public Perro(string _Nombre, decimal _Peso, string _ColorPelo) : base(_Nombre, _Peso)
+        {
+            ColorPelo = _ColorPelo;
+        }
+
+        public override string getInfo()
+        {
+             return "Soy un "+Nombre+" y peso "+Peso+" kg"+ " y tengo el pelo de color "+ColorPelo;
         }
     }
 
@@ -24,7 +39,7 @@ namespace POO
             Peso = _Peso;
         }
 
-        public string getInfo()
+        public virtual string getInfo()
         {
             return "Soy un "+Nombre+" y peso "+Peso+" kg";
         }
