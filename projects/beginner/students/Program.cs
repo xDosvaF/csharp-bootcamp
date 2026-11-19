@@ -6,6 +6,7 @@ namespace Students
     {
         private static bool Create = true;
         private static List<Students> listStudent = new List<Students>();
+        private static int option;
 
         public static void Main()
         {
@@ -19,31 +20,38 @@ namespace Students
                 ");
 
                 Console.Write("Option: ");
-                int option = Convert.ToInt32(Console.ReadLine());
-
-                switch (option)
+                try
                 {
-                    case(1):
-                        Console.Write("Name: ");
-                        string name = Console.ReadLine();
-                        Console.Write("Carnet:");
-                        int carnet = Convert.ToInt32(Console.ReadLine());
+                    option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case (1):
+                            Console.Write("Name: ");
+                            string? name = Console.ReadLine();
+                            Console.Write("Carnet:");
+                            int carnet = Convert.ToInt32(Console.ReadLine());
 
-                        CreateStudent(name, carnet);
-                        Console.WriteLine("Estudiante creado correctamente");
-                        break;
-                    
-                    case(3):
-                        ReadStudent();
-                        break;
+                            CreateStudent(name, carnet);
+                            Console.WriteLine("Estudiante creado correctamente");
+                            break;
 
-                    case(4):
-                        Create = false;
-                        break;
+                        case (3):
+                            ReadStudent();
+                            break;
 
-                    default:
-                        Console.WriteLine("Opcion no válida");
-                        break;
+                        case (4):
+                            Create = false;
+                            break;
+
+                        default:
+                            Console.WriteLine("Opcion no válida");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
             }
         }
@@ -58,13 +66,12 @@ namespace Students
                 decimal nota = Convert.ToDecimal(Console.ReadLine());
 
                 int a = newStudent.SetNota(nota);
-                
-                if(a == 1)
+
+                if (a == 1)
                 {
+                    listStudent.Add(newStudent);
                     break;
                 }
-
-                listStudent.Add(newStudent);
             }
         }
 
@@ -76,9 +83,9 @@ namespace Students
                 return;
             }
 
-            foreach(var item in listStudent)
+            foreach (var item in listStudent)
             {
-                Console.WriteLine($"name: {item.Nombre}");
+                Console.WriteLine($"{item.Nombre} | {item.Carnet} | {item.GetNota()}");
             }
         }
     }
