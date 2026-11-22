@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Students
 {
@@ -33,6 +34,12 @@ namespace Students
 
                             CreateStudent(name, carnet);
                             Console.WriteLine("Estudiante creado correctamente");
+                            break;
+
+                        case (2):
+                            Console.Write("Carnet: ");
+                            int searchCarnet = Convert.ToInt32(Console.ReadLine());
+                            UpdateStudent(searchCarnet);
                             break;
 
                         case (3):
@@ -86,6 +93,24 @@ namespace Students
             foreach (var item in listStudent)
             {
                 Console.WriteLine($"{item.Nombre} | {item.Carnet} | {item.GetNota()}");
+            }
+        }
+
+        private static void UpdateStudent(decimal _carnet)
+        {
+            var newStudent = listStudent
+            .Where(p => p.Carnet == _carnet );
+
+            Console.Write("Name: ");
+            string? _name = Console.ReadLine();
+            Console.Write("Calificacion: ");
+            int _nota = Convert.ToInt32(Console.ReadLine());
+
+            foreach(var item in newStudent)
+            {
+
+                item.Nombre = _name;
+                item.SetNota(_nota);
             }
         }
     }
