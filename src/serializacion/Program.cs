@@ -15,8 +15,8 @@ public class Serializacion
             ""_Autor"" : ""Pepito""
         }";
 
-        Libro pepito = JsonSerializer.Deserialize<Libro>(newPepe);
-        Console.WriteLine(pepito._Nombre);
+        Libro? pepito = JsonSerializer.Deserialize<Libro>(newPepe);
+        Console.WriteLine(pepito?._Nombre);
     }
 }
 
