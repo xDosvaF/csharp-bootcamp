@@ -32,6 +32,8 @@ namespace funcional
             {
                 Console.WriteLine(item2.Brand);
             }
+
+            Console.WriteLine(UtilDay.DayToTomorrow(new DateTime(2026,11,7)));
         }
     }
 
