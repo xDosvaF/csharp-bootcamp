@@ -22,10 +22,10 @@ namespace Biblioteca
             if(_State == true)
             {
                 _State = false;
-                Console.WriteLine("Prestado con éxito!");
+                Console.WriteLine("\nPrestado con éxito!\n");
                 return;
             }
-            Console.WriteLine("No se puede prestar");
+            Console.WriteLine("\nNo se puede prestar\n");
         }
 
         public void Devolver()
@@ -33,18 +33,18 @@ namespace Biblioteca
             if(_State == false)
             {
                 _State = true;
-                Console.WriteLine("Devuelto con éxito!");
+                Console.WriteLine("\nDevuelto con éxito!\n");
                 return;
             }
-            Console.WriteLine("No se puede devolver porque no seha prestado");
+            Console.WriteLine("\nNo se puede devolver porque no seha prestado\n");
         }
 
         public void MostrarInformacion()
         {
-            Console.WriteLine("Título: "+_Titulo);
+            Console.WriteLine("\nTítulo: "+_Titulo);
             Console.WriteLine("Autor: "+_Autor);
             Console.WriteLine("Publicacion: "+_Publication);
-            Console.WriteLine("Estado: "+_State ? "Activo" : "Prestado");
+            Console.WriteLine("Estado: "+(_State ? "Activo" : "Prestado")+"\n");
         }
 
     }
